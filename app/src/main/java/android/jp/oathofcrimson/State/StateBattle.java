@@ -26,7 +26,8 @@ public class StateBattle extends State
 
     public void drawCharacter(Canvas canvas)
     {
-        GameDisplay.assetSheetBattleTemp.drawSprite(canvas, 1000, 50, 1, 1);
+        //GameDisplay.assetSheetBattleTemp.drawSprite(canvas, 1000, 50, 1, 1);
+        canvas.drawBitmap(GameDisplay.assetTempUnit, 1000, 50, null);
     }
 
     public void tick()
