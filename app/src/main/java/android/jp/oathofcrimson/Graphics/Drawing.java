@@ -62,9 +62,12 @@ public class Drawing
         canvas.drawRect(rect, paint);
     }
 
-    public static void textWrite(Canvas canvas, String text, String colour, int drawX, int drawY)
+    public static void screenFill(Canvas canvas, int r, int g, int b)
     {
-        textWrite(canvas, text, colour, drawX, drawY, 16);
+        Rect rect = new Rect(0, 0, GameDisplay.WIDTH, GameDisplay.HEIGHT);
+        Paint paint = new Paint();
+        paint.setColor(Color.rgb(r, g, b));
+        canvas.drawRect(rect, paint);
     }
 
     public static void textWrite(Canvas canvas, String text, String colour, int drawX, int drawY, int size)

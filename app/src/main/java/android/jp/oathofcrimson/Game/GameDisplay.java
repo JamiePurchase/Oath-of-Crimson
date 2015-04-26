@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.jp.oathofcrimson.Graphics.Spritesheet;
 import android.jp.oathofcrimson.R;
 import android.jp.oathofcrimson.State.State;
 import android.jp.oathofcrimson.State.StateTitle;
@@ -23,6 +24,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
     // Assets (move these)
     public static Bitmap assetBkgBattle;
     public static Bitmap assetBkgTitle;
+    public static Spritesheet assetSheetBattleTemp;
 
     public GameDisplay(Context context)
     {
@@ -37,6 +39,9 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         // Backgrounds (move these to an assets class>)
         assetBkgBattle = BitmapFactory.decodeResource(getResources(), R.drawable.bkg_battle);
         assetBkgTitle = BitmapFactory.decodeResource(getResources(), R.drawable.bkg_title);
+
+        // Spritesheets (move these)
+        assetSheetBattleTemp = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.sheet_temp), 160, 160);
     }
 
     @Override

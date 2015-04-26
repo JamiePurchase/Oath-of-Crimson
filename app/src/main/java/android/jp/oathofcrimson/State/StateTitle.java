@@ -28,6 +28,6 @@ public class StateTitle extends State
 
     public void touch(MotionEvent event)
     {
-        GameDisplay.setState(new StateBattle());
+        GameDisplay.setState(new StateScene());
     }
 }
