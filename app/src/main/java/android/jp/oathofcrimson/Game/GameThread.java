@@ -1,4 +1,4 @@
-package android.jp.oathofcrimson;
+package android.jp.oathofcrimson.Game;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 

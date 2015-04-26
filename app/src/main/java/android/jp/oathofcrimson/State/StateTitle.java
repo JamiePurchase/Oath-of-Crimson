@@ -1,11 +1,12 @@
-package android.jp.oathofcrimson;
+package android.jp.oathofcrimson.State;
 
 import android.graphics.Canvas;
+import android.jp.oathofcrimson.Game.GameDisplay;
 import android.view.MotionEvent;
 
-public class StateBattle extends State
+public class StateTitle extends State
 {
-    public StateBattle()
+    public StateTitle()
     {
 
     }
@@ -17,7 +18,7 @@ public class StateBattle extends State
 
     public void drawBackground(Canvas canvas)
     {
-        canvas.drawBitmap(GameDisplay.assetBkgBattle, 0, 0, null);
+        canvas.drawBitmap(GameDisplay.assetBkgTitle, 0, 0, null);
     }
 
     public void tick()

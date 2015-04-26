@@ -1,6 +1,7 @@
-package android.jp.oathofcrimson;
+package android.jp.oathofcrimson.Game;
 
 import android.app.Activity;
+import android.jp.oathofcrimson.R;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;

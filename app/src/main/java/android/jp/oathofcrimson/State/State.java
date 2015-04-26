@@ -1,4 +1,4 @@
-package android.jp.oathofcrimson;
+package android.jp.oathofcrimson.State;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;

@@ -1,10 +1,11 @@
-package android.jp.oathofcrimson;
+package android.jp.oathofcrimson.Graphics;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.jp.oathofcrimson.Game.GameDisplay;
 
 public class Drawing
 {

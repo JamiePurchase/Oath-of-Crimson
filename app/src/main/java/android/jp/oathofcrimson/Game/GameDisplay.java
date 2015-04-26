@@ -1,9 +1,12 @@
-package android.jp.oathofcrimson;
+package android.jp.oathofcrimson.Game;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.jp.oathofcrimson.R;
+import android.jp.oathofcrimson.State.State;
+import android.jp.oathofcrimson.State.StateTitle;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
