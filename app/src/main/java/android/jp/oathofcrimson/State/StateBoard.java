@@ -1,31 +1,31 @@
 package android.jp.oathofcrimson.State;
 
 import android.graphics.Canvas;
-import android.jp.oathofcrimson.Battle.Battle;
+import android.jp.oathofcrimson.Board.Board;
 import android.view.MotionEvent;
 
-public class StateBattle extends State
+public class StateBoard extends State
 {
-    private Battle battle;
+    private Board board;
 
-    public StateBattle()
+    public StateBoard()
     {
         // NOTE: Consider passing the battle into this constructor
-        this.battle = new Battle("test");
+        this.board = new Board("test");
     }
 
     public void render(Canvas canvas)
     {
-        battle.render(canvas);
+        board.render(canvas);
     }
 
     public void tick()
     {
-        battle.tick();
+        board.tick();
     }
 
     public void touch(MotionEvent event)
     {
-        battle.touch(event);
+        board.touch(event);
     }
 }

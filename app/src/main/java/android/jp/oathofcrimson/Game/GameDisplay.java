@@ -25,6 +25,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
     public static Bitmap assetBkgBattle;
     public static Bitmap assetBkgTitle;
     public static Bitmap assetTempUnit;
+    public static Bitmap assetTileGrass1;
     public static Spritesheet assetSheetBattleTemp;
 
     public GameDisplay(Context context)
@@ -41,8 +42,11 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         assetBkgBattle = BitmapFactory.decodeResource(getResources(), R.drawable.bkg_battle);
         assetBkgTitle = BitmapFactory.decodeResource(getResources(), R.drawable.bkg_title);
 
+        // Temp Board Tiles
+        assetTileGrass1 = BitmapFactory.decodeResource(getResources(), R.drawable.board_tile_grass1);
+
         // Temp Images
-        assetTempUnit = BitmapFactory.decodeResource(getResources(), R.drawable.temp_unit);
+        assetTempUnit = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle1);
 
         // Spritesheets (move these)
         assetSheetBattleTemp = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.sheet_temp), 160, 160);
