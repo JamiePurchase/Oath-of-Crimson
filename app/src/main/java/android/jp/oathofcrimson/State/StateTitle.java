@@ -8,7 +8,6 @@ public class StateTitle extends State
 {
     public StateTitle()
     {
-
     }
 
     public void render(Canvas canvas)

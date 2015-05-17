@@ -1,11 +1,10 @@
 package android.jp.oathofcrimson.Battle;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.jp.oathofcrimson.Game.GameDisplay;
 import android.jp.oathofcrimson.Graphics.Drawing;
-import android.jp.oathofcrimson.State.StateBattle;
 import android.view.MotionEvent;
+
 
 public class Battle
 {

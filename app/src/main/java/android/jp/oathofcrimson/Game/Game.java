@@ -1,12 +1,18 @@
 package android.jp.oathofcrimson.Game;
 
 import android.app.Activity;
+import android.content.Context;
 import android.jp.oathofcrimson.R;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class Game extends Activity
 {
@@ -18,6 +24,31 @@ public class Game extends Activity
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(new GameDisplay(this));
+
+        // Temp
+        String accountName = "Jamie";
+        FileOutputStream outputStream = null;
+        try {
+            outputStream = getApplicationContext().openFileOutput("test.txt", Context.MODE_PRIVATE);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        ObjectOutputStream oos = null;
+        try {
+            oos = new ObjectOutputStream(outputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            oos.writeObject(accountName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            oos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
