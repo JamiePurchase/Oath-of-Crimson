@@ -163,7 +163,7 @@ public class Battle
 
     public void tickUnitAction()
     {
-        // NOTE: Need to do this for all units
+        // NOTE: Need to do this for all units (make a tick function in the unit classes
         tempUnitActionTick += 1;
         if(tempUnitActionTick > 20)
         {
@@ -194,6 +194,14 @@ public class Battle
 
     public void touch(MotionEvent event)
     {
+        // call a function to get the touchNexus (object or string?) using event.getX() and event.getY();
+        String touchNexus = "tempCommand";
+        if(touchNexus.equals("tempCommand") && tempMenuCommand)
+        {
+            // Temp attack selected
+        }
+
+        // Temp
         System.exit(0);
     }
 
