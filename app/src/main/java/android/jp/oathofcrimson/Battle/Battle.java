@@ -65,10 +65,10 @@ public class Battle
         //renderUnitEnemies(canvas);
 
         // Render Information
-        //renderInterfaceParty(canvas);
+        renderInterfaceParty(canvas);
 
         // Render Command Menu
-        //if(tempMenuCommand) {renderInterfaceCommand(canvas);}
+        if(tempMenuCommand) {renderInterfaceCommand(canvas);}
     }
 
     public void renderBackground(Canvas canvas)
@@ -79,13 +79,13 @@ public class Battle
     public void renderInterfaceCommand(Canvas canvas)
     {
         Drawing.rectDraw(canvas, Drawing.getPaint("BLACK"), 40, 590, 200, 100);
-        Drawing.textWrite(canvas, "Attack", "WHITE", 50, 600, 32);
+        Drawing.textWrite(canvas, "Attack", "WHITE", 50, 620, 32);
     }
 
     public void renderInterfaceParty(Canvas canvas)
     {
-        //Drawing.rectDraw(canvas, Drawing.getPaint("BLACK"), 900, 600, 200, 100);
-        Drawing.textWrite(canvas, "Jamie", "BLACK", 1000, 600, 32);
+        Drawing.rectDraw(canvas, Drawing.getPaint("BLACK"), 840, 530, 200, 100);
+        Drawing.textWrite(canvas, "Jamie", "WHITE", 850, 560, 32);
     }
 
     public void renderUnitAllies(Canvas canvas)

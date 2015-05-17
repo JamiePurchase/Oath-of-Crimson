@@ -13,8 +13,8 @@ public class Drawing
     public static int[] getColour(String name)
     {
         // Named Colours
-        if(name=="Black") {return new int[]{0, 0, 0};}
-        if(name=="White") {return new int[]{255, 255, 255};}
+        if(name=="BLACK") {return new int[]{0, 0, 0};}
+        if(name=="WHITE") {return new int[]{255, 255, 255};}
 
         // Theme Colours
         if(name=="BattleGrass1") {return new int[]{224, 187, 112};}
