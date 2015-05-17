@@ -10,8 +10,8 @@ public abstract class Unit
     public abstract void tick();
 
     // Drawing
-    private Bitmap[] drawAnimAttackA = new Bitmap[10];
-    private Bitmap[] drawAnimIdle = new Bitmap[10];
+    private Bitmap[] drawAnimAttackA = new Bitmap[11];
+    private Bitmap[] drawAnimIdle = new Bitmap[11];
     private int drawPosX;
     private int drawPosY;
 
@@ -29,7 +29,7 @@ public abstract class Unit
         this.drawPosY = 0;
 
         // Temp
-        this.drawAnimIdle[0] = GameDisplay.assetTempUnit;
+        this.drawAnimIdle = GameDisplay.assetTempUnitIdle;
     }
 
     public Bitmap getDrawAnim(String stance, int frame)

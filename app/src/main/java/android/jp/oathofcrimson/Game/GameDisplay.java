@@ -24,7 +24,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
     // Assets (move these)
     public static Bitmap assetBkgBattle;
     public static Bitmap assetBkgTitle;
-    public static Bitmap assetTempUnit;
+    public static Bitmap[] assetTempUnitIdle;
     public static Bitmap assetTileGrass1;
     public static Spritesheet assetSheetBattleTemp;
 
@@ -46,7 +46,18 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         assetTileGrass1 = BitmapFactory.decodeResource(getResources(), R.drawable.board_tile_grass1);
 
         // Temp Images
-        assetTempUnit = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle1);
+        assetTempUnitIdle = new Bitmap[11];
+        assetTempUnitIdle[0] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle1);
+        assetTempUnitIdle[1] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle2);
+        assetTempUnitIdle[2] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle3);
+        assetTempUnitIdle[3] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle4);
+        assetTempUnitIdle[4] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle5);
+        assetTempUnitIdle[5] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle6);
+        assetTempUnitIdle[6] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle7);
+        assetTempUnitIdle[7] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle8);
+        assetTempUnitIdle[8] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle9);
+        assetTempUnitIdle[9] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle10);
+        assetTempUnitIdle[10] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle11);
 
         // Spritesheets (move these)
         assetSheetBattleTemp = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.sheet_temp), 160, 160);

@@ -73,7 +73,6 @@ public class Drawing
     public static void textWrite(Canvas canvas, String text, String colour, int drawX, int drawY, int size)
     {
         Paint paint = new Paint();
-        canvas.drawPaint(paint);
         int[] rgb = getColour(colour);
         paint.setColor(Color.rgb(rgb[0], rgb[1], rgb[2]));
         paint.setTextSize(size);
