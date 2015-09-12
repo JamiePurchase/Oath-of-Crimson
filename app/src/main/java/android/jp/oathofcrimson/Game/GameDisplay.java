@@ -60,7 +60,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
 
         // Temp Board Tiles
         assetImageTileGrass = BitmapFactory.decodeResource(getResources(), R.drawable.board_tile_grass1);
-        assetSheetBuildHouse = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.board_tile_grass1), 32, 32);
+        assetSheetBuildHouse = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.board_build_house1), 32, 32);
 
         // Temp Images
         Bitmap[] tempUnit = new Bitmap[11];

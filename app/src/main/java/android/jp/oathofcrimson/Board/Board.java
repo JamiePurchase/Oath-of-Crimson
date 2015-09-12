@@ -57,14 +57,14 @@ public class Board
         setTileAll(GameDisplay.assetImageTileGrass, false);
 
         // TEMP
-        /*setTile(4, 4, GameDisplay.assetSheetBuildHouse.getImage(0, 0), true);
+        setTile(4, 4, GameDisplay.assetSheetBuildHouse.getImage(0, 0), true);
         setTile(5, 4, GameDisplay.assetSheetBuildHouse.getImage(1, 0), true);
         setTile(6, 4, GameDisplay.assetSheetBuildHouse.getImage(2, 0), true);
         setTile(7, 4, GameDisplay.assetSheetBuildHouse.getImage(3, 0), true);
         setTile(4, 5, GameDisplay.assetSheetBuildHouse.getImage(0, 1), true);
         setTile(5, 5, GameDisplay.assetSheetBuildHouse.getImage(1, 1), true);
         setTile(6, 5, GameDisplay.assetSheetBuildHouse.getImage(2, 1), true);
-        setTile(7, 5, GameDisplay.assetSheetBuildHouse.getImage(3, 1), true);*/
+        setTile(7, 5, GameDisplay.assetSheetBuildHouse.getImage(3, 1), true);
 
         // Entities
         this.entityPlayer = new EntityPlayer(this, GameDisplay.assetSheetBoardUnit1, 3, 2, Direction.SOUTH);
@@ -116,8 +116,8 @@ public class Board
         // Render Tiles
         this.renderTiles(canvas);
         // TEMP
-        //Drawing.imageDraw(canvas, GameDisplay.assetSheetBuildHouse.getImage(0, 0), 64, 32);
-        //Drawing.imageDraw(canvas, GameDisplay.assetSheetBuildHouse.getImage(1, 0), 96, 32);
+        /*canvas.drawBitmap(GameDisplay.assetSheetBuildHouse.getImage(0, 0), 64, 32, null);
+        canvas.drawBitmap(GameDisplay.assetSheetBuildHouse.getImage(1, 0), 96, 32, null);*/
 
         // Render Entities
         this.renderEntity(canvas);
