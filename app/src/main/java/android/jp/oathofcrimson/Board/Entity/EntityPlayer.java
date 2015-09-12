@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.jp.oathofcrimson.Board.Board;
+import android.jp.oathofcrimson.Board.BoardTile;
 import android.jp.oathofcrimson.Graphics.Spritesheet;
 
 public class EntityPlayer
@@ -40,6 +41,13 @@ public class EntityPlayer
 
         // Action
         this.playerAction = Action.IDLE;
+    }
+
+    private boolean getMovePossible()
+    {
+        BoardTile destination = getTileFace();
+        if(destination == null) {return false;}
+        return destination.isFree();
     }
 
     private Bitmap getRenderImage()
@@ -79,6 +87,17 @@ public class EntityPlayer
         return (this.playerPosY - this.playerBoard.getOffsetY()) * 32 + offsetY;
     }
 
+    private BoardTile getTileFace()
+    {
+        int tileX = this.playerPosX;
+        int tileY = this.playerPosY;
+        if(this.playerFace == Direction.EAST) {tileX += 1;}
+        if(this.playerFace == Direction.NORTH) {tileY -= 1;}
+        if(this.playerFace == Direction.SOUTH) {tileY += 1;}
+        if(this.playerFace == Direction.WEST) {tileX -= 1;}
+        return this.playerBoard.getTile(tileX, tileY);
+    }
+
     public void render(Canvas canvas)
     {
         canvas.drawBitmap(this.getRenderImage(), this.getRenderPosX(), this.getRenderPosY(), null);
@@ -102,10 +121,10 @@ public class EntityPlayer
                 {
                     this.playerAnimFrame = 0;
                     this.playerAction = Action.IDLE;
-                    if(this.playerFace == Direction.EAST) {this.playerPosX -= 1;}
+                    if(this.playerFace == Direction.EAST) {this.playerPosX += 1;}
                     if(this.playerFace == Direction.NORTH) {this.playerPosY -= 1;}
                     if(this.playerFace == Direction.SOUTH) {this.playerPosY += 1;}
-                    if(this.playerFace == Direction.WEST) {this.playerPosX += 1;}
+                    if(this.playerFace == Direction.WEST) {this.playerPosX -= 1;}
                 }
             }
         }
@@ -115,11 +134,13 @@ public class EntityPlayer
     {
         if(this.playerAction == Action.IDLE)
         {
-            // NOTE: check collision and edge of map for the destination area before walking
-            this.playerAction = Action.WALK;
             this.playerFace = direction;
-            this.playerAnimTick = 0;
-            this.playerAnimFrame = 0;
+            if(this.getMovePossible())
+            {
+                this.playerAction = Action.WALK;
+                this.playerAnimTick = 0;
+                this.playerAnimFrame = 0;
+            }
         }
     }
 

@@ -33,7 +33,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
     // Assets
     public static Bitmap assetImageBattleBkg, assetImageTitleBkg, assetImageTileGrass, assetImageCursor1;
     public static Bitmap assetIconWeaponSword1;
-    public static Bitmap assetUiButtonArrowE, assetUiButtonArrowN, assetUiButtonArrowS, assetUiButtonArrowW;
+    public static Bitmap assetUiButtonArrowE, assetUiButtonArrowN, assetUiButtonArrowS, assetUiButtonArrowW, assetUiButtonBlank2;
     public static Bitmap[] assetSheetUnitTemp;
 
     // Assets (move these)
@@ -84,6 +84,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         assetUiButtonArrowN = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_n);
         assetUiButtonArrowS = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_s);
         assetUiButtonArrowW = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_w);
+        assetUiButtonBlank2 = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_blank2);
 
         // Spritesheets (move these)
         assetSheetBattleTemp = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.sheet_temp), 160, 160);
