@@ -41,8 +41,13 @@ public class StateMenu extends State
 
     }
 
-    public void touch(MotionEvent event)
+    public void touchAction(MotionEvent event)
     {
         System.exit(1);
+    }
+
+    public void touchEdge(MotionEvent event)
+    {
+        //
     }
 }

@@ -22,17 +22,18 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 800;
 
+    // Campaign
+    public static Campaign CAMPAIGN;
+
     // Engine
     private GameThread thread;
     private static State state;
     private static File dataFolder;
 
-    // Campaign
-    public static Campaign CAMPAIGN;
-
     // Assets
     public static Bitmap assetImageBattleBkg, assetImageTitleBkg, assetImageTileGrass, assetImageCursor1;
     public static Bitmap assetIconWeaponSword1;
+    public static Bitmap assetUiButtonArrowE, assetUiButtonArrowN, assetUiButtonArrowS, assetUiButtonArrowW;
     public static Bitmap[] assetSheetUnitTemp;
 
     // Assets (move these)
@@ -45,13 +46,13 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         CONTEXT = context;
         getHolder().addCallback(this);
 
-        // Engine
-        thread = new GameThread(getHolder(), this);
-        setFocusable(true);
-        dataFolder = context.getFilesDir();
-
         // Campaign
         CAMPAIGN = new Campaign();
+
+        // Engine
+        thread = new GameThread(getHolder(), this, CAMPAIGN.getSettings().getPerformanceFPS());
+        setFocusable(true);
+        dataFolder = context.getFilesDir();
 
         // Assets
         assetImageBattleBkg = BitmapFactory.decodeResource(getResources(), R.drawable.bkg_battle);
@@ -78,6 +79,11 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
 
         assetImageCursor1 = BitmapFactory.decodeResource(getResources(), R.drawable.cursor1);
         assetIconWeaponSword1 = BitmapFactory.decodeResource(getResources(), R.drawable.icon_weapon_sword1);
+
+        assetUiButtonArrowE = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_e);
+        assetUiButtonArrowN = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_n);
+        assetUiButtonArrowS = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_s);
+        assetUiButtonArrowW = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_w);
 
         // Spritesheets (move these)
         assetSheetBattleTemp = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.sheet_temp), 160, 160);
@@ -110,6 +116,12 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         {
             state.touch(event);
             return true;
+        }
+
+        // TEST
+        if(event.getAction() == MotionEvent.EDGE_TOP)
+        {
+            state.touch(event);
         }
 
         if(event.getAction() == MotionEvent.ACTION_UP)

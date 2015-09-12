@@ -30,7 +30,7 @@ public class Campaign
     private AccomplishmentManager accomplishment;
 
     // Settings
-    //
+    private CampaignSettings settings;
 
     public Campaign()
     {
@@ -38,7 +38,7 @@ public class Campaign
         this.campaignRef = "TEST";
         this.campaignTime = 0;
 
-        // NOTE: may want a class that holds many different statistics
+        // NOTE: may want a class that holds many different statistics (number of battles, quests completed, puzzles solved, etc...)
 
         // Party
         this.partyCharacter = new Party(this);
@@ -52,9 +52,14 @@ public class Campaign
         this.questActive = 0;
 
         // Accomplishments
-        accomplishment = new AccomplishmentManager(this);
+        this.accomplishment = new AccomplishmentManager(this);
 
         // Settings
-        //
+        this.settings = new CampaignSettings(this);
+    }
+
+    public CampaignSettings getSettings()
+    {
+        return this.settings;
     }
 }

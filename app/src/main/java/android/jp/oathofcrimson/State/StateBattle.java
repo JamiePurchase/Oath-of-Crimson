@@ -25,9 +25,14 @@ public class StateBattle extends State
         battle.tick();
     }
 
-    public void touch(MotionEvent event)
+    public void touchAction(MotionEvent event)
     {
         battle.touch(event);
+    }
+
+    public void touchEdge(MotionEvent event)
+    {
+        //
     }
 
 }

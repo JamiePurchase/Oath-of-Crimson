@@ -100,7 +100,7 @@ public class StateDev extends State
 
     }
 
-    public void touch(MotionEvent event)
+    public void touchAction(MotionEvent event)
     {
         // Update Touch Coordinates
         this.devTouchX = (int) event.getX();
@@ -112,6 +112,11 @@ public class StateDev extends State
         if(button == "BOARD") {GameDisplay.setState(new StateBoard());}
         if(button == "SAVE") {fileSave();}
         if(button == "LOAD") {fileLoad();}
+    }
+
+    public void touchEdge(MotionEvent event)
+    {
+        //
     }
 
 }

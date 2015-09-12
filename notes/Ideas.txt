@@ -1,0 +1,3 @@
+Ideas
+ - custom application icons
+ - swipe across from the side/top for the menu?

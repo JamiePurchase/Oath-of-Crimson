@@ -26,10 +26,15 @@ public class StateTitle extends State
 
     }
 
-    public void touch(MotionEvent event)
+    public void touchAction(MotionEvent event)
     {
         //GameDisplay.setState(new StateScene());
         GameDisplay.setState(new StateDev());
+    }
+
+    public void touchEdge(MotionEvent event)
+    {
+        //
     }
 
 }

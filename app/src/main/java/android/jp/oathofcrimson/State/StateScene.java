@@ -28,8 +28,13 @@ public class StateScene extends State
         this.scene.tick();
     }
 
-    public void touch(MotionEvent event)
+    public void touchAction(MotionEvent event)
     {
         this.scene.touch(event);
+    }
+
+    public void touchEdge(MotionEvent event)
+    {
+        //
     }
 }

@@ -4,18 +4,19 @@ import android.view.SurfaceHolder;
 
 public class GameThread extends Thread
 {
-    private int FPS = 30;
+    private int FPS;
     private double averageFPS;
     private SurfaceHolder surfaceHolder;
     private GameDisplay gameDisplay;
     private boolean running;
     public static Canvas canvas;
 
-    public GameThread(SurfaceHolder surfaceHolder, GameDisplay gameDisplay)
+    public GameThread(SurfaceHolder surfaceHolder, GameDisplay gameDisplay, int fps)
     {
         super();
         this.surfaceHolder = surfaceHolder;
         this.gameDisplay = gameDisplay;
+        this.FPS = fps;
     }
     @Override
     public void run()
