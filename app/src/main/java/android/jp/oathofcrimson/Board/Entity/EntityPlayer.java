@@ -113,7 +113,7 @@ public class EntityPlayer
         if(this.playerAction == Action.WALK)
         {
             this.playerAnimTick += 1;
-            if(this.playerAnimTick >= 12)
+            if(this.playerAnimTick >= 6)
             {
                 this.playerAnimTick = 0;
                 this.playerAnimFrame += 1;

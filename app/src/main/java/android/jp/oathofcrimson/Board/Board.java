@@ -37,17 +37,18 @@ public class Board
     //private boolean interfaceMission;
 
     // TEMP (need to get interfaceControl working)
-    private final Rect interfaceControlArrowE = new Rect(150, 500, 200, 550);
-    private final Rect interfaceControlArrowN = new Rect(95, 445, 145, 495);
-    private final Rect interfaceControlArrowS = new Rect(95, 555, 145, 605);
-    private final Rect interfaceControlArrowW = new Rect(40, 500, 90, 550);
-    private final Rect interfaceControlPause = new Rect(1000, 40, 1100, 90);
+    private final Rect interfaceControlPause = new Rect(1050, 20, 1250, 120);
+    //
+    private final Rect interfaceControlArrowE = new Rect(150, 660, 200, 710);
+    private final Rect interfaceControlArrowN = new Rect(95, 605, 145, 655);
+    private final Rect interfaceControlArrowS = new Rect(95, 715, 145, 765);
+    private final Rect interfaceControlArrowW = new Rect(40, 660, 90, 710);
 
     public Board(String template)
     {
         // Board
-        this.boardSizeX = 12;
-        this.boardSizeY = 6;
+        this.boardSizeX = 26;
+        this.boardSizeY = 14;
         this.boardOffsetX = 0;
         this.boardOffsetY = 0;
         this.boardPause = false;
@@ -56,7 +57,7 @@ public class Board
         this.terrain = new BoardTile[this.boardSizeX][this.boardSizeY];
         setTileAll(GameDisplay.assetImageTileGrass, false);
 
-        // TEMP
+        // TEMP: House
         setTile(4, 4, GameDisplay.assetSheetBuildHouse.getImage(0, 0), true);
         setTile(5, 4, GameDisplay.assetSheetBuildHouse.getImage(1, 0), true);
         setTile(6, 4, GameDisplay.assetSheetBuildHouse.getImage(2, 0), true);
@@ -65,9 +66,26 @@ public class Board
         setTile(5, 5, GameDisplay.assetSheetBuildHouse.getImage(1, 1), true);
         setTile(6, 5, GameDisplay.assetSheetBuildHouse.getImage(2, 1), true);
         setTile(7, 5, GameDisplay.assetSheetBuildHouse.getImage(3, 1), true);
+        setTile(4, 6, GameDisplay.assetSheetBuildHouse.getImage(0, 2), true);
+        setTile(5, 6, GameDisplay.assetSheetBuildHouse.getImage(1, 2), true);
+        setTile(6, 6, GameDisplay.assetSheetBuildHouse.getImage(2, 2), true);
+        setTile(7, 6, GameDisplay.assetSheetBuildHouse.getImage(3, 2), true);
+        setTile(4, 7, GameDisplay.assetSheetBuildHouse.getImage(0, 4), true);
+        setTile(5, 7, GameDisplay.assetSheetBuildHouse.getImage(1, 4), true);
+        setTile(6, 7, GameDisplay.assetSheetBuildHouse.getImage(2, 4), true);
+        setTile(7, 7, GameDisplay.assetSheetBuildFence.getImage(0, 1), true);
+
+        // TEMP: Fence
+        setTile(8, 7, GameDisplay.assetSheetBuildFence.getImage(1, 0), true);
+        setTile(9, 7, GameDisplay.assetSheetBuildFence.getImage(1, 0), true);
+        setTile(10, 7, GameDisplay.assetSheetBuildFence.getImage(2, 0), true);
+        setTile(11, 7, GameDisplay.assetSheetBuildFence.getImage(5, 0), true);
+
+        // TEMP: Bush
+        setTile(10, 4, GameDisplay.assetSheetNatureBush.getImage(1, 0), true);
 
         // Entities
-        this.entityPlayer = new EntityPlayer(this, GameDisplay.assetSheetBoardUnit1, 3, 2, Direction.SOUTH);
+        this.entityPlayer = new EntityPlayer(this, GameDisplay.assetSheetBoardUnit1, 5, 8, Direction.SOUTH);
         //this.entityNpc = new ArrayList();
 
         // Audio
@@ -166,7 +184,7 @@ public class Board
     private void renderInterfaceUi(Canvas canvas)
     {
         // Pause Button
-        canvas.drawBitmap(GameDisplay.assetUiButtonBlank2, this.interfaceControlPause.left, this.interfaceControlPause.top, null);
+        canvas.drawBitmap(GameDisplay.assetUiButtonBlank3, this.interfaceControlPause.left, this.interfaceControlPause.top, null);
         Drawing.textWrite(canvas, "PAUSE", "BLACK", this.interfaceControlPause.left, this.interfaceControlPause.top, 28);
 
         // Directional Arrows

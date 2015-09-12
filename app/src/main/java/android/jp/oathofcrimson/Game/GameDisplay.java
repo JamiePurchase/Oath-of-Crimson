@@ -33,11 +33,12 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
     // Assets
     public static Bitmap assetImageBattleBkg, assetImageTitleBkg, assetImageTileGrass, assetImageCursor1;
     public static Bitmap assetIconWeaponSword1;
-    public static Bitmap assetUiButtonArrowE, assetUiButtonArrowN, assetUiButtonArrowS, assetUiButtonArrowW, assetUiButtonBlank2;
+    public static Bitmap assetUiButtonArrowE, assetUiButtonArrowN, assetUiButtonArrowS, assetUiButtonArrowW;
+    public static Bitmap assetUiButtonBlank2, assetUiButtonBlank3;
     public static Bitmap[] assetSheetUnitTemp;
 
     // Assets (move these)
-    public static Spritesheet assetSheetBattleTemp, assetSheetBuildHouse, assetSheetBoardUnit1;
+    public static Spritesheet assetSheetBattleTemp, assetSheetBuildHouse, assetSheetBoardUnit1, assetSheetBuildFence, assetSheetNatureBush;
 
     public GameDisplay(Context context)
     {
@@ -61,6 +62,8 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         // Temp Board Tiles
         assetImageTileGrass = BitmapFactory.decodeResource(getResources(), R.drawable.board_tile_grass1);
         assetSheetBuildHouse = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.board_build_house1), 32, 32);
+        assetSheetBuildFence = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.board_build_fence1), 32, 32);
+        assetSheetNatureBush = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.board_nature_bush1), 32, 32);
 
         // Temp Images
         Bitmap[] tempUnit = new Bitmap[11];
@@ -85,6 +88,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         assetUiButtonArrowS = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_s);
         assetUiButtonArrowW = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_arrow_w);
         assetUiButtonBlank2 = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_blank2);
+        assetUiButtonBlank3 = BitmapFactory.decodeResource(getResources(), R.drawable.ui_button_blank3);
 
         // Spritesheets (move these)
         assetSheetBattleTemp = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.sheet_temp), 160, 160);
