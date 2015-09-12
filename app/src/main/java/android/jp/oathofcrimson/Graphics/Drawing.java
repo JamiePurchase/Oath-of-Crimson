@@ -8,8 +8,12 @@ import android.graphics.Rect;
 import android.jp.oathofcrimson.Game.GameDisplay;
 import android.jp.oathofcrimson.Tools.Shapes;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Drawing
 {
+    public static HashMap<String, Color> colors;
 
     public static int[] getColour(String name)
     {
@@ -21,6 +25,7 @@ public class Drawing
         if(name == "BattleGrass1") {return new int[]{169, 230, 115};}
         if(name == "MenuGreen") {return new int[]{145, 181, 89};}
         if(name == "MenuGreen2") {return new int[]{155, 201, 99};}
+        if(name == "MenuShadow") {return new int[]{95, 151, 59};}
 
         // Default
         return new int[]{0, 0, 0};

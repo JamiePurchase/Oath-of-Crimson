@@ -2,6 +2,7 @@ package android.jp.oathofcrimson.Board;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.jp.oathofcrimson.Board.Interface.Control;
 import android.jp.oathofcrimson.Game.GameDisplay;
 import android.jp.oathofcrimson.State.StateBattle;
 import android.view.MotionEvent;
@@ -19,8 +20,9 @@ public class Board
     private BoardEntityNpc[] entityNpc = new BoardEntityNpc[10];
 
     // Interface
-    private boolean interfaceMinimap;
-    private boolean interfaceMission;
+    private Control interfaceControl;
+    //private boolean interfaceMinimap;
+    //private boolean interfaceMission;
 
     // Tiles
     private BoardTile[][] tileGrid;
@@ -33,8 +35,11 @@ public class Board
         this.audioAmbientSfxActive = false;
         this.audioBackgroundActive = false;
         this.encounterActive = false;
-        this.tileHigh = 6;
-        this.tileWide = 6;
+        this.tileHigh = 22;
+        this.tileWide = 46;
+
+        // Interface
+        interfaceControl = new Control(this);
 
         // Temp Tiles
         this.tileGrid = new BoardTile[this.tileHigh][this.tileWide];
@@ -44,13 +49,14 @@ public class Board
     public void render(Canvas canvas)
     {
         // Render Tiles
-        renderTiles(canvas);
+        this.renderTiles(canvas);
 
         // Render Entities
-        renderEntityNpc(canvas);
+        //renderEntityNpc(canvas);
 
         // Render Interface
-        renderInterfaceMinimap(canvas);
+        this.interfaceControl.render(canvas);
+        //this.renderInterfaceMinimap(canvas);
     }
 
     public void renderEntityNpc(Canvas canvas)
@@ -61,21 +67,21 @@ public class Board
         }
     }
 
-    public void renderInterfaceMinimap(Canvas canvas)
+    /*public void renderInterfaceMinimap(Canvas canvas)
     {
         if(this.interfaceMinimap == true)
         {
 
         }
-    }
+    }*/
 
-    public void renderInterfaceMission(Canvas canvas)
+    /*public void renderInterfaceMission(Canvas canvas)
     {
         if(this.interfaceMission == true)
         {
 
         }
-    }
+    }*/
 
     public void renderTiles(Canvas canvas)
     {
@@ -106,7 +112,7 @@ public class Board
 
     public void touch(MotionEvent event)
     {
-        GameDisplay.setState(new StateBattle());
+        //GameDisplay.setState(new StateBattle());
     }
 
 }

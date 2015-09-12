@@ -55,8 +55,8 @@ public class Button
         Drawing.rectShadow(canvas, "MenuShadow", this.getArea());
 
         // Background
-        if(this.buttonSelect) {Drawing.rectDraw(canvas, "MenuGreen2", this.getArea());}
-        else {Drawing.rectDraw(canvas, "MenuGreen", this.getArea());}
+        if(this.buttonSelect) {Drawing.rectFill(canvas, "MenuGreen2", this.getArea());}
+        else {Drawing.rectFill(canvas, "MenuGreen", this.getArea());}
 
         // Caption
         Drawing.textWrite(canvas, this.buttonCaption, "BLACK", this.getArea().left + 15, this.getArea().top + 30, 32);

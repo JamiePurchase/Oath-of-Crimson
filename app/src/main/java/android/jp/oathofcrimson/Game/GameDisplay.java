@@ -18,6 +18,7 @@ import java.util.HashMap;
 public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
 {
     // Display
+    public static Context CONTEXT;
     public static final int WIDTH = 1280;
     public static final int HEIGHT = 800;
 
@@ -40,6 +41,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
     {
         // Display
         super(context);
+        CONTEXT = context;
         getHolder().addCallback(this);
 
         // Engine

@@ -1,5 +1,6 @@
 package android.jp.oathofcrimson.State;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
