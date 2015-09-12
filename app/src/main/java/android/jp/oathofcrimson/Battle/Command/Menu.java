@@ -4,6 +4,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.jp.oathofcrimson.Battle.Battle;
 import android.jp.oathofcrimson.Battle.UnitAlly;
+import android.jp.oathofcrimson.Game.GameDisplay;
 import android.jp.oathofcrimson.Graphics.Drawing;
 import android.view.MotionEvent;
 
@@ -23,6 +24,10 @@ public class Menu
     private boolean menuSelectActive;
     private int menuSelectOption;
 
+    // Cursor
+    private int menuCursorTick, menuCursorFrame;
+    private boolean menuCursorAnim;
+
     public Menu(Battle battle, UnitAlly unit)
     {
         // Menu
@@ -35,6 +40,11 @@ public class Menu
         // Selection
         this.menuSelectActive = false;
         this.menuSelectOption = 0;
+
+        // Cursor
+        this.menuCursorTick = 0;
+        this.menuCursorFrame = 0;
+        this.menuCursorAnim = true;
 
         // TEMP
         this.addOption("ATTACK", "ATTACK", MenuOptionType.ATTACK, "Strike an enemy with your weapon");
@@ -68,6 +78,12 @@ public class Menu
     {
         this.renderFrame(canvas);
         this.renderOption(canvas);
+        this.renderCursor(canvas);
+    }
+
+    private void renderCursor(Canvas canvas)
+    {
+        Drawing.imageDraw(canvas, GameDisplay.assetImageCursor1, this.getArea().left + this.menuCursorFrame, this.getArea().top + 30);
     }
 
     private void renderFrame(Canvas canvas)
@@ -105,7 +121,26 @@ public class Menu
 
     public void tick()
     {
-        //
+        this.tickCursor();
+    }
+
+    private void tickCursor()
+    {
+        this.menuCursorTick += 1;
+        if(this.menuCursorTick >= 30)
+        {
+            this.menuCursorTick = 0;
+            if(this.menuCursorAnim)
+            {
+                this.menuCursorFrame += 1;
+                if(this.menuCursorFrame >= 20) {this.menuCursorAnim = false;}
+            }
+            else
+            {
+                this.menuCursorFrame -= 1;
+                if(this.menuCursorFrame <= 0) {this.menuCursorAnim = true;}
+            }
+        }
     }
 
     public String touch(MotionEvent event)

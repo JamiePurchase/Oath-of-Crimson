@@ -1,4 +1,4 @@
-package android.jp.oathofcrimson.Item;
+package android.jp.oathofcrimson.Campaign.Items;
 
 import android.graphics.Bitmap;
 
@@ -16,4 +16,5 @@ public class ItemWeapon extends Item
     {
         return this.statDamage;
     }
+
 }

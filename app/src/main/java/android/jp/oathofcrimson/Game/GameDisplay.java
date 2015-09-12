@@ -31,11 +31,12 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
     public static Campaign CAMPAIGN;
 
     // Assets
-    public static Bitmap assetImageBattleBkg, assetImageTitleBkg, assetImageTileGrass;
+    public static Bitmap assetImageBattleBkg, assetImageTitleBkg, assetImageTileGrass, assetImageCursor1;
+    public static Bitmap assetIconWeaponSword1;
     public static Bitmap[] assetSheetUnitTemp;
 
     // Assets (move these)
-    public static Spritesheet assetSheetBattleTemp;
+    public static Spritesheet assetSheetBattleTemp, assetSheetBuildHouse, assetSheetBoardUnit1;
 
     public GameDisplay(Context context)
     {
@@ -58,6 +59,7 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
 
         // Temp Board Tiles
         assetImageTileGrass = BitmapFactory.decodeResource(getResources(), R.drawable.board_tile_grass1);
+        assetSheetBuildHouse = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.board_tile_grass1), 32, 32);
 
         // Temp Images
         Bitmap[] tempUnit = new Bitmap[11];
@@ -74,8 +76,12 @@ public class GameDisplay extends SurfaceView implements SurfaceHolder.Callback
         tempUnit[10] = BitmapFactory.decodeResource(getResources(), R.drawable.sprite_battle_temp_idle11);
         assetSheetUnitTemp = tempUnit;
 
+        assetImageCursor1 = BitmapFactory.decodeResource(getResources(), R.drawable.cursor1);
+        assetIconWeaponSword1 = BitmapFactory.decodeResource(getResources(), R.drawable.icon_weapon_sword1);
+
         // Spritesheets (move these)
         assetSheetBattleTemp = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.sheet_temp), 160, 160);
+        assetSheetBoardUnit1 = new Spritesheet(BitmapFactory.decodeResource(getResources(), R.drawable.sprite_board_unit1), 32, 32);
     }
 
     @Override

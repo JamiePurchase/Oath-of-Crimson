@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.jp.oathofcrimson.Board.Interface.Control;
 import android.jp.oathofcrimson.Game.GameDisplay;
+import android.jp.oathofcrimson.Graphics.Drawing;
 import android.jp.oathofcrimson.State.StateBattle;
 import android.view.MotionEvent;
 
@@ -20,7 +21,7 @@ public class Board
     private BoardEntityNpc[] entityNpc = new BoardEntityNpc[10];
 
     // Interface
-    private Control interfaceControl;
+    //private Control interfaceControl;
     //private boolean interfaceMinimap;
     //private boolean interfaceMission;
 
@@ -35,11 +36,11 @@ public class Board
         this.audioAmbientSfxActive = false;
         this.audioBackgroundActive = false;
         this.encounterActive = false;
-        this.tileHigh = 22;
-        this.tileWide = 46;
+        this.tileHigh = 4;
+        this.tileWide = 4;
 
         // Interface
-        interfaceControl = new Control(this);
+        //this.interfaceControl = new Control(this);
 
         // Temp Tiles
         this.tileGrid = new BoardTile[this.tileHigh][this.tileWide];
@@ -48,6 +49,9 @@ public class Board
 
     public void render(Canvas canvas)
     {
+        // Background (TEMP)
+        Drawing.screenFill(canvas, "BLACK");
+
         // Render Tiles
         this.renderTiles(canvas);
 
@@ -55,17 +59,24 @@ public class Board
         //renderEntityNpc(canvas);
 
         // Render Interface
-        this.interfaceControl.render(canvas);
+        //this.interfaceControl.render(canvas);
         //this.renderInterfaceMinimap(canvas);
+
+        // TEMP
+        Drawing.imageDraw(canvas, GameDisplay.assetSheetBoardUnit1.getImage(0, 0), 0, 0);
+
+        // TEMP
+        Drawing.imageDraw(canvas, GameDisplay.assetSheetBuildHouse.getImage(0, 0), 64, 32);
+        Drawing.imageDraw(canvas, GameDisplay.assetSheetBuildHouse.getImage(1, 0), 96, 32);
     }
 
-    public void renderEntityNpc(Canvas canvas)
+    /*public void renderEntityNpc(Canvas canvas)
     {
         for(int entity = 0; entity < entityNpc.length; entity++)
         {
             entityNpc[entity].render(canvas);
         }
-    }
+    }*/
 
     /*public void renderInterfaceMinimap(Canvas canvas)
     {
@@ -94,13 +105,18 @@ public class Board
         }
     }
 
+    public void setTile(int tileX, int tileY, Bitmap image, boolean solid)
+    {
+        this.tileGrid[tileX][tileY] = new BoardTile(image, solid);
+    }
+
     public void setTileAll(Bitmap image, boolean solid)
     {
         for(int col = 0; col < tileWide; col++)
         {
             for(int row = 0; row < tileHigh; row++)
             {
-                this.tileGrid[col][row] = new BoardTile(GameDisplay.assetImageTileGrass, false);
+                setTile(col, row, image, solid);
             }
         }
     }

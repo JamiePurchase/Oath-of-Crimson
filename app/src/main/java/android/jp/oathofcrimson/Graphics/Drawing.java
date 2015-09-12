@@ -63,6 +63,11 @@ public class Drawing
         return paint;
     }
 
+    public static void imageDraw(Canvas canvas, Bitmap image, int posX, int posY)
+    {
+        canvas.drawBitmap(image, posX, posY, null);
+    }
+
     public static void imageDrawTile(Canvas canvas, Bitmap image, int sizeX, int sizeY)
     {
         int drawX = 0;

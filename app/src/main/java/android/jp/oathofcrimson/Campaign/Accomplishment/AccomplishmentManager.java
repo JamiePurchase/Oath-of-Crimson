@@ -1,11 +1,17 @@
-package android.jp.oathofcrimson.Data;
+package android.jp.oathofcrimson.Campaign.Accomplishment;
+
+import android.jp.oathofcrimson.Campaign.Campaign;
+import android.jp.oathofcrimson.Campaign.Accomplishment.Accomplishment;
 
 public class AccomplishmentManager
 {
-    private Accomplishment[] accomplishments = new Accomplishment[50];
+    private Campaign accomplishmentCampaign;
+    private Accomplishment[] accomplishmentArray = new Accomplishment[50];
 
-    public AccomplishmentManager()
+    public AccomplishmentManager(Campaign campaign)
     {
+        this.accomplishmentCampaign = campaign;
+
         // Campaign Missions
         this.add("Prodigy", "Achieve five stars in all every battle during the tutorial.", false);
         // NOTE: Various challenges, including five stars for each mission in the campaign
@@ -25,4 +31,5 @@ public class AccomplishmentManager
     {
         new Accomplishment(title, description, secret);
     }
+
 }

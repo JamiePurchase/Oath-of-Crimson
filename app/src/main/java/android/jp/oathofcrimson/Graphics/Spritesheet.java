@@ -17,6 +17,11 @@ public class Spritesheet
         this.imgHigh = high;
     }
 
+    public Bitmap getImage(int imageX, int imageY)
+    {
+        return Bitmap.createBitmap(this.sheet, imageX * imgWide, imageY * imgHigh, imgWide, imgHigh);
+    }
+
     public void drawSprite(Canvas canvas, int drawX, int drawY, int sheetX, int sheetY)
     {
         int spriteX = (sheetX * imgWide) - imgWide;

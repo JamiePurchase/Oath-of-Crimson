@@ -1,4 +1,4 @@
-package android.jp.oathofcrimson.Data;
+package android.jp.oathofcrimson.Campaign.Accomplishment;
 
 public class Accomplishment
 {

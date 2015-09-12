@@ -1,5 +1,6 @@
-package android.jp.oathofcrimson.Campaign;
+package android.jp.oathofcrimson.Campaign.Characters;
 
+import android.jp.oathofcrimson.Campaign.Campaign;
 import java.util.ArrayList;
 
 public class Party
@@ -11,6 +12,11 @@ public class Party
     {
         this.partyCampaign = campaign;
         this.partyCharacters = new ArrayList();
+    }
+
+    public void addCharacter(Character character)
+    {
+        this.partyCharacters.add(character);
     }
 
 }
