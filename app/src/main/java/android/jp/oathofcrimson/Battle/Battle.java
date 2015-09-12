@@ -1,19 +1,39 @@
 package android.jp.oathofcrimson.Battle;
 
 import android.graphics.Canvas;
+import android.jp.oathofcrimson.Battle.Command.Menu;
+import android.jp.oathofcrimson.Battle.Environment.Environment;
+import android.jp.oathofcrimson.Battle.Party.Display;
+import android.jp.oathofcrimson.Campaign.Campaign;
 import android.jp.oathofcrimson.Game.GameDisplay;
 import android.jp.oathofcrimson.Graphics.Drawing;
+import android.jp.oathofcrimson.Interface.Button.ButtonGroup;
+import android.jp.oathofcrimson.State.StateBattle;
 import android.view.MotionEvent;
+
+import java.util.ArrayList;
 
 
 public class Battle
 {
+    // Battle
+    private StateBattle battleState;
+    private Campaign battleCampaign;
+    private boolean battleRunning;
+
     // NOTE: Consider having a BattleLocation object (can be intelligent with different angles, moving scenery,
     // ability for units to move around, interactive features (eg: artillery), etc...)
-    private String location;
 
-    //private UnitAlly[] unitAllies = new UnitAlly[4];
-    //private UnitEnemy[] unitEnemies = new UnitEnemy[5];
+    // Environment
+    private Environment environment;
+
+    // Interface
+    private Display interfaceParty;
+    private Menu interfaceCommand;
+    private ButtonGroup interfaceButton;
+
+    private UnitAlly[] unitAlly = new UnitAlly[4];
+    //private UnitEnemy[] unitEnemy = new UnitEnemy[5];
 
     // Temp
     private boolean tempBattleRunning;
@@ -32,9 +52,24 @@ public class Battle
     // Temp
     private boolean tempMenuCommand;
 
-    public Battle(String location)
+    public Battle(StateBattle state, Campaign campaign)
     {
-        this.location = location;
+        // Battle
+        this.battleState = state;
+        this.battleCampaign = campaign;
+        this.battleRunning = true;
+
+        // Environment
+        this.environment = environment;
+
+        // Units
+        //this.unitAlly;
+
+        // Interface
+        this.interfaceParty = new Display(this);
+        this.interfaceCommand = null;
+        this.interfaceButton = new ButtonGroup();
+        this.interfaceButton.addButton("PAUSE", 1161, 5, "PAUSE");
 
         // Temp
         tempBattleRunning = true;
@@ -54,40 +89,46 @@ public class Battle
         tempUnitWaitTurn = 3;
     }
 
+    public void commandMenu()
+    {
+        this.interfaceCommand = null;
+    }
+
+    public void commandMenu(UnitAlly unit)
+    {
+        this.interfaceCommand = new Menu(this, unit);
+    }
+
+    public UnitAlly[] getUnitAlly()
+    {
+        return this.unitAlly;
+    }
+
+    private void pause(boolean running)
+    {
+        this.battleRunning = running;
+    }
+
     public void render(Canvas canvas)
     {
-        // Render Background
-        renderBackground(canvas);
+        // Render Environment
+        this.environment.render(canvas);
 
         // Render Units
         renderUnitAllies(canvas);
         //renderUnitEnemies(canvas);
 
-        // Render Information
-        renderInterfaceParty(canvas);
+        // Render Party Information
+        this.interfaceParty.render(canvas);
 
         // Render Command Menu
-        if(tempMenuCommand) {renderInterfaceCommand(canvas);}
+        if(this.interfaceCommand != null) {this.interfaceCommand.render(canvas);}
+
+        // Render Buttons
+        this.interfaceButton.render(canvas);
     }
 
-    public void renderBackground(Canvas canvas)
-    {
-        canvas.drawBitmap(GameDisplay.assetBkgBattle, 0, 0, null);
-    }
-
-    public void renderInterfaceCommand(Canvas canvas)
-    {
-        Drawing.rectDraw(canvas, Drawing.getPaint("BLACK"), 40, 590, 200, 100);
-        Drawing.textWrite(canvas, "Attack", "WHITE", 50, 620, 32);
-    }
-
-    public void renderInterfaceParty(Canvas canvas)
-    {
-        Drawing.rectDraw(canvas, Drawing.getPaint("BLACK"), 840, 530, 200, 100);
-        Drawing.textWrite(canvas, "Jamie", "WHITE", 850, 560, 32);
-    }
-
-    public void renderUnitAllies(Canvas canvas)
+    private void renderUnitAllies(Canvas canvas)
     {
         /*for(int unit = 0; unit < unitAllies.length; unit++)
         {
@@ -95,10 +136,10 @@ public class Battle
         }*/
 
         // Temp
-        canvas.drawBitmap(GameDisplay.assetTempUnitIdle[tempUnitAnimFrame], 1000, 200, null);
+        canvas.drawBitmap(GameDisplay.assetSheetUnitTemp[tempUnitAnimFrame], 1000, 200, null);
     }
 
-    public void renderUnitEnemies(Canvas canvas)
+    private void renderUnitEnemies(Canvas canvas)
     {
         /*for(int unit = 0; unit < unitEnemies.length; unit++)
         {
@@ -117,7 +158,7 @@ public class Battle
         }
     }
 
-    public void tickTurn()
+    private void tickTurn()
     {
         tempBattleTurnTick += 1;
         if(tempBattleTurnTick > 10)
@@ -128,40 +169,40 @@ public class Battle
         }
     }
 
-    public void tickTurnAdvance()
+    private void tickTurnAdvance()
     {
         tickTurnAdvanceLocation();
         tickTurnAdvanceUnit();
     }
 
-    public void tickTurnAdvanceLocation()
+    private void tickTurnAdvanceLocation()
     {
         // NOTE: Should probably just call BattleLocation.advance();
     }
 
-    public void tickTurnAdvanceUnit()
+    private void tickTurnAdvanceUnit()
     {
         tickTurnAdvanceUnitAllies();
         tickTurnAdvanceUnitEnemies();
     }
 
-    public void tickTurnAdvanceUnitAllies()
+    private void tickTurnAdvanceUnitAllies()
     {
         // Check status effects
     }
 
-    public void tickTurnAdvanceUnitEnemies()
+    private void tickTurnAdvanceUnitEnemies()
     {
 
     }
 
-    public void tickUnit()
+    private void tickUnit()
     {
         tickUnitAction();
         tickUnitAnimation();
     }
 
-    public void tickUnitAction()
+    private void tickUnitAction()
     {
         // NOTE: Need to do this for all units (make a tick function in the unit classes
         tempUnitActionTick += 1;
@@ -177,7 +218,7 @@ public class Battle
         }
     }
 
-    public void tickUnitAnimation()
+    private void tickUnitAnimation()
     {
         // Temp (the action and anim functions should belong to the unit)
         tempUnitAnimTick += 1;
@@ -194,15 +235,31 @@ public class Battle
 
     public void touch(MotionEvent event)
     {
-        // call a function to get the touchNexus (object or string?) using event.getX() and event.getY();
-        String touchNexus = "tempCommand";
-        if(touchNexus.equals("tempCommand") && tempMenuCommand)
-        {
-            // Temp attack selected
-        }
+        // Pause Menu
+        //if(this.interfacePause != null)
+        // TEMP
+        if(!this.battleRunning) {this.pause(true);}
 
-        // Temp
-        System.exit(0);
+        // Command Menu
+        if(this.interfaceCommand != null) {this.touchCommand(event);}
+
+        // Buttons
+        this.touchButton(event);
+    }
+
+    private void touchButton(MotionEvent event)
+    {
+        String button = this.interfaceButton.touch(event);
+        if(button == "PAUSE") {this.pause(false);}
+    }
+
+    private void touchCommand(MotionEvent event)
+    {
+        if(this.interfaceCommand.getTouch(event))
+        {
+            String command = this.interfaceCommand.touch(event);
+            // NOTE: if command != null then the player has chosen a command
+        }
     }
 
     /*public void unitAddAlly(UnitAlly ally)

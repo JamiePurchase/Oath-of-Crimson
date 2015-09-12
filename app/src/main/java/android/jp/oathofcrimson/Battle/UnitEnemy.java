@@ -11,11 +11,12 @@ public class UnitEnemy extends Unit
 
     public void render(Canvas canvas)
     {
-        canvas.drawBitmap(this.getDrawAnim("Idle", 0), this.getDrawPosX(), this.getDrawPosY(), null);
+        canvas.drawBitmap(this.getDrawAnim(UnitStance.IDLE, 0), this.getDrawPosX(), this.getDrawPosY(), null);
     }
 
     public void tick()
     {
 
     }
+
 }

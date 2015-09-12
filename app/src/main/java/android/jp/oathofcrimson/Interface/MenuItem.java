@@ -25,7 +25,7 @@ public class MenuItem
 
     public void render(Canvas canvas)
     {
-        Drawing.rectDraw(canvas, Drawing.getPaint("BLACK", 1), this.animDrawX, this.animDrawY, this.animSizeX, this.animSizeY);
+        Drawing.rectDraw(canvas, "BLACK", this.animDrawX, this.animDrawY, this.animSizeX, this.animSizeY);
         Drawing.textWrite(canvas, this.itemTitle, "BLACK", this.animDrawX + 5, this.animDrawY + 5, 22);
     }
 }

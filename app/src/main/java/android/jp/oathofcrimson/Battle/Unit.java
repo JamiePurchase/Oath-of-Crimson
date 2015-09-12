@@ -9,6 +9,10 @@ public abstract class Unit
     public abstract void render(Canvas canvas);
     public abstract void tick();
 
+    // Position
+    private int posColumn;
+    private UnitRow posRow;
+
     // Drawing
     private Bitmap[] drawAnimAttackA = new Bitmap[11];
     private Bitmap[] drawAnimIdle = new Bitmap[11];
@@ -24,18 +28,22 @@ public abstract class Unit
 
     public Unit(String template)
     {
+        // Position
+        this.posColumn = 1;
+        this.posRow = UnitRow.FRONT;
+
         // Default Properties
         this.drawPosX = 0;
         this.drawPosY = 0;
 
         // Temp
-        this.drawAnimIdle = GameDisplay.assetTempUnitIdle;
+        this.drawAnimIdle = GameDisplay.assetSheetUnitTemp;
     }
 
-    public Bitmap getDrawAnim(String stance, int frame)
+    public Bitmap getDrawAnim(UnitStance stance, int frame)
     {
-        if(stance == "AttackA") {return this.drawAnimAttackA[frame];}
-        if(stance == "Idle") {return this.drawAnimIdle[frame];}
+        if(stance == UnitStance.ATTACKA) {return this.drawAnimAttackA[frame];}
+        if(stance == UnitStance.IDLE) {return this.drawAnimIdle[frame];}
         return this.drawAnimIdle[0];
     }
 
@@ -47,6 +55,16 @@ public abstract class Unit
     public int getDrawPosY()
     {
         return this.drawPosY;
+    }
+
+    public int getPosColumn()
+    {
+        return this.posColumn;
+    }
+
+    public UnitRow getPosRow()
+    {
+        return this.posRow;
     }
 
     public void setDrawPosX(int posX)

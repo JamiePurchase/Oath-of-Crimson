@@ -38,7 +38,7 @@ public class Board
 
         // Temp Tiles
         this.tileGrid = new BoardTile[this.tileHigh][this.tileWide];
-        setTileAll(GameDisplay.assetTileGrass1, false);
+        setTileAll(GameDisplay.assetImageTileGrass, false);
     }
 
     public void render(Canvas canvas)
@@ -94,7 +94,7 @@ public class Board
         {
             for(int row = 0; row < tileHigh; row++)
             {
-                this.tileGrid[col][row] = new BoardTile(GameDisplay.assetTileGrass1, false);
+                this.tileGrid[col][row] = new BoardTile(GameDisplay.assetImageTileGrass, false);
             }
         }
     }
@@ -108,4 +108,5 @@ public class Board
     {
         GameDisplay.setState(new StateBattle());
     }
+
 }

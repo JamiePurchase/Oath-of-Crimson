@@ -6,14 +6,14 @@ public class UnitAlly extends Unit
 {
     private int statOverdrive;
 
-    public UnitAlly(String template, int pos, String row)
+    public UnitAlly(String template, int pos, UnitRow row)
     {
         super(template);
 
         // Set Position
-        if(row == "Front") {this.setDrawPosX(1000);}
+        if(this.getPosRow() == UnitRow.FRONT) {this.setDrawPosX(1000);}
         else {this.setDrawPosX(1050);}
-        this.setDrawPosY(pos*200);
+        this.setDrawPosY(pos * 200);
 
         // Load Template
         new TemplateAlly(this, template);
@@ -26,7 +26,7 @@ public class UnitAlly extends Unit
 
     public void render(Canvas canvas)
     {
-        canvas.drawBitmap(this.getDrawAnim("Idle", 0), this.getDrawPosX(), this.getDrawPosY(), null);
+        canvas.drawBitmap(this.getDrawAnim(UnitStance.IDLE, 0), this.getDrawPosX(), this.getDrawPosY(), null);
     }
 
     public void setStatOverdrive(int amount)

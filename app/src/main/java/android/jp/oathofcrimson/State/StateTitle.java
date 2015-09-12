@@ -6,18 +6,19 @@ import android.view.MotionEvent;
 
 public class StateTitle extends State
 {
+
     public StateTitle()
     {
     }
 
     public void render(Canvas canvas)
     {
-        drawBackground(canvas);
+        this.renderBackground(canvas);
     }
 
-    public void drawBackground(Canvas canvas)
+    private void renderBackground(Canvas canvas)
     {
-        canvas.drawBitmap(GameDisplay.assetBkgTitle, 0, 0, null);
+        canvas.drawBitmap(GameDisplay.assetImageTitleBkg, 0, 0, null);
     }
 
     public void tick()
@@ -27,6 +28,8 @@ public class StateTitle extends State
 
     public void touch(MotionEvent event)
     {
-        GameDisplay.setState(new StateScene());
+        //GameDisplay.setState(new StateScene());
+        GameDisplay.setState(new StateDev());
     }
+
 }
